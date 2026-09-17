@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./page/Home.jsx";
 import About from "./page/About.jsx";
 import Footer from "./components/Footer.jsx";
+import './index.css'
 
 function App() {
   return (

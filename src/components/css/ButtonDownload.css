@@ -1,0 +1,126 @@
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(255, 130, 73, 0.25);
+  white-space: nowrap;
+}
+
+/* Variants */
+.btn-download--primary {
+  background: linear-gradient(135deg, #ff5500 0%, #ff8249 100%);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-download--primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #e64c00 0%, #ff7332 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(255, 85, 0, 0.35);
+}
+
+.btn-download--primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(255, 85, 0, 0.2);
+}
+
+.btn-download--secondary {
+  background: var(--code-bg, #f4f3ec);
+  color: var(--text-h, #08060d);
+  border-color: var(--border, #e5e4e7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.btn-download--secondary:hover:not(:disabled) {
+  background: var(--border, #e5e4e7);
+  color: var(--accent, #aa3bff);
+  transform: translateY(-1px);
+}
+
+.btn-download--outline {
+  background: transparent;
+  color: var(--btn_bg, #ff8249);
+  border-color: var(--btn_bg, #ff8249);
+  box-shadow: none;
+}
+
+.btn-download--outline:hover:not(:disabled) {
+  background: rgba(255, 130, 73, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Sizes */
+.btn-download--sm {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+.btn-download--sm .btn-download-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.btn-download--md {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.95rem;
+}
+
+.btn-download--md .btn-download-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-download--lg {
+  padding: 0.8rem 1.75rem;
+  font-size: 1.05rem;
+  border-radius: 12px;
+}
+
+.btn-download--lg .btn-download-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Icon Animation on hover */
+.btn-download:hover:not(:disabled) .btn-download-icon {
+  transform: translateY(2px);
+}
+
+.btn-download-icon {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+/* Disabled & Loading States */
+.btn-download:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none !important;
+}
+
+/* Spinner */
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: btn-spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
