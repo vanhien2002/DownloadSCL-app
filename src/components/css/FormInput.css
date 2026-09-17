@@ -1,0 +1,14 @@
+.inpItem {
+    height: 2rem;
+    border: 1px solid #9c9595;
+    border-radius: 10px;
+    width: 9cm;
+}
+
+.btn-download{
+    padding: 10px ;
+    background-color: var( --btn_bg);
+    border-radius: 9px;
+    border: 0.1rem solid  var( --btn_bg);
+    margin-left: 10px;
+}

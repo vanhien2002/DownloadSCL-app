@@ -1,43 +1,77 @@
 .header-block {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow);
     position: sticky;
     top: 0;
     z-index: 1000;
-}
-
-.header-left {
-    font-size: 24px;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--accent) 0%, #ff5e62 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 1px;
-}
-
-.header-right {
-    display: flex;
-    gap: 15px;
-}
-
-.header-right a {
-    text-decoration: none;
-    color: var(--text-h);
-    font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    padding: 1rem 0;
     transition: all 0.3s ease;
 }
 
-.header-right a:hover {
-    background: var(--accent-bg);
-    color: var(--accent);
-    transform: translateY(-2px);
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.header-logo a {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-accent {
+    background: linear-gradient(135deg, #4f46e5, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header-nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #64748b;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #0f172a;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #4f46e5;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #0f172a;
 }

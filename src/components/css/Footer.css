@@ -1,0 +1,18 @@
+.footer-block {
+    margin-top: auto;
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 1px solid var(--border);
+    color: var(--text);
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.footer-block:hover {
+    color: var(--accent);
+    
+}
