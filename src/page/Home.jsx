@@ -1,7 +1,12 @@
+import FormInput from '../components/FormInput.jsx'
+
 function Home ()
 {
     return (
-        <div>This is page home my home</div>
+        <>
+            <FormInput/>
+            <div>This is page home my home</div>
+        </>
     );
 }
 
