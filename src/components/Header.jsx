@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
+import './css/Header.css';
 
 function Header() {
     return (
-        <div>
-            <div>Logo</div>
-            <div style={{ display: 'flex', gap: '15px' }}>
+        <div className="header-block">
+            <div className="header-left">Logo</div>
+            <div className="header-right">
                 <Link to="/">Home</Link>
                 <Link to="/about">About</Link>
             </div>
@@ -12,4 +13,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default Header;
