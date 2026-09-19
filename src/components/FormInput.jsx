@@ -3,7 +3,7 @@ import ButtonDownload from "./ButtonDownload.jsx";
 import "./css/FormInput.css";
 import Error from "./Error.jsx";
 
-function FormInput({ onStartDownload }) {
+function FormInput({ onStartDownload,handleStartSubmitForm }) {
   const [url, setUrl] = useState("");
   const [validationError, setValidationError] = useState("");
   const [downloadStatus, setDownloadStatus] = useState(null);
@@ -16,6 +16,7 @@ function FormInput({ onStartDownload }) {
   };
 
   const handleSubmit = (e) => {
+    handleStartSubmitForm(url, "start");
     if (e) e.preventDefault();
     setValidationError("");
     
@@ -58,6 +59,9 @@ function FormInput({ onStartDownload }) {
     try {
       if (onStartDownload) {
         onStartDownload(trimmedUrl);
+        handleStartSubmitForm(url, "susscess");
+        // Tắt bảng Error/Processing ngay khi submit thành công
+        setDownloadStatus(null);
       } else {
         // Simulated process steps with live progress
         setTimeout(() => {
@@ -108,18 +112,12 @@ function FormInput({ onStartDownload }) {
             onChange={(e) => {
               setUrl(e.target.value);
               if (validationError) setValidationError("");
+              // Tắt bảng Error nếu người dùng bắt đầu nhập lại
+              if (downloadStatus && downloadStatus.status === "error") {
+                setDownloadStatus(null);
+              }
             }}
-          />
-          {validationError && (
-            <div className="validation-error-msg">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="12" y1="8" x2="12" y2="12"/>
-                <line x1="12" y1="16" x2="12.01" y2="16"/>
-              </svg>
-              <span>{validationError}</span>
-            </div>
-          )}
+          /> 
         </div>
         <ButtonDownload text="Download" size="md" type="submit" />
       </form>

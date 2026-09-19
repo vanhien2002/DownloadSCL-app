@@ -15,7 +15,7 @@ const mock100Tracks = Array.from({ length: 100 }, (_, index) => ({
 
 
 function Home() {
-  const [tracks, settracks] = useState(mock100Tracks);
+  const [tracks, settracks] = useState([]);
   const [currentPage, setcurrentPage] = useState(1);
   const itemPerpage = 3;
 
@@ -28,13 +28,22 @@ function Home() {
     setcurrentPage(pageNumber);
   };
 
+  const handleStartSubmitForm = (url, status) => {
+    if(status == "susscess")
+    {
+      settracks(mock100Tracks); 
+    }
+    else {settracks([]);}
+  }
+
+  const handleStartDownload = (url) => {
+    // Hiển thị mock data sau khi submit URL hợp lệ
+    settracks(mock100Tracks);
+    setcurrentPage(1); // Reset về trang 1
+  };
+
   return (
-    <main className="home-container">
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+    <main className="home-container"> 
       <div className="home-header">
         <h1 className="home-title">
           SoundCloud <span className="title-gradient">Downloader</span>
@@ -46,54 +55,51 @@ function Home() {
       </div>
 
       <div className="block-input">
-        <FormInput />
+        <FormInput onStartDownload={handleStartDownload} handleStartSubmitForm = {handleStartSubmitForm}/>
       </div>
 
-      <div className="track-list-section">
-        <div className="track-list-header">
-          <h2 className="track-list-title">
-            <svg
-              className="section-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M9 18V5l12-2v13" />
-              <circle cx="6" cy="18" r="3" />
-              <circle cx="18" cy="16" r="3" />
-            </svg>
-            <span>Tracks List</span>
-            <span className="track-count-badge">{tracks.length}</span>
-          </h2>
-        </div>
+      {tracks.length > 0 && (
+        <>
+          <div className="track-list-section">
+            <div className="track-list-header">
+              <h2 className="track-list-title">
+                <svg
+                  className="section-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M9 18V5l12-2v13" />
+                  <circle cx="6" cy="18" r="3" />
+                  <circle cx="18" cy="16" r="3" />
+                </svg>
+                <span>Tracks List</span>
+                <span className="track-count-badge">{tracks.length}</span>
+              </h2>
+            </div>
 
-        <div className="track-list w-8/10 mx-auto">
-          {currentTracks.map((track) => (
-            <Track
-              key={track.id}
-              title={track.title}
-              artist={track.artist}
-              duration={track.duration}
-              image={track.image}
-            />
-          ))}
-        </div>
-        <div>
+            <div className="track-list w-8/10 mx-auto">
+              {currentTracks.map((track) => (
+                <Track
+                  key={track.id}
+                  title={track.title}
+                  artist={track.artist}
+                  duration={track.duration}
+                  image={track.image}
+                />
+              ))}
+            </div> 
+          </div> 
           <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
-        </div>
-      </div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </>
+      )}
     </main>
   );
 }

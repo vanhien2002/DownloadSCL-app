@@ -21,7 +21,7 @@ function Track({
   const formattedDuration = formatDuration(duration);
 
   return (
-    <div className="block-track">
+    <div className="block-track mt-1.5">
       <div className="track-card">
         <div className="track-cover-container">
           <img
@@ -33,7 +33,7 @@ function Track({
                 "https://i1.sndcdn.com/artworks-x9Ee1zlKgCXEq31K-f6dqlw-t1080x1080.jpg";
             }}
           />
-          <div className="track-duration-badge">
+          <div className="track-duration-badge h-5">
             <svg
               className="badge-icon"
               viewBox="0 0 24 24"
