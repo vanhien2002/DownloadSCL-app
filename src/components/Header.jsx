@@ -3,7 +3,7 @@ import './css/Header.css';
 
 function Header() {
     const location = useLocation();
-    
+
     return (
         <header className="header-block">
             <div className="header-container">
@@ -13,14 +13,14 @@ function Header() {
                     </Link>
                 </div>
                 <nav className="header-nav">
-                    <Link 
-                        to="/" 
+                    <Link
+                        to="/"
                         className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
                     >
                         Home
                     </Link>
-                    <Link 
-                        to="/about" 
+                    <Link
+                        to="/about"
                         className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
                     >
                         About
