@@ -30,6 +30,11 @@ function Home() {
 
   return (
     <main className="home-container">
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
       <div className="home-header">
         <h1 className="home-title">
           SoundCloud <span className="title-gradient">Downloader</span>
@@ -75,6 +80,13 @@ function Home() {
               image={track.image}
             />
           ))}
+        </div>
+        <div>
+          <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
         </div>
       </div>
       <Pagination
