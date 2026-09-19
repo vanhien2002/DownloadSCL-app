@@ -2,10 +2,24 @@
 import "./css/Pagination.css"
 
 function Pagination({ currentPage, totalPages, onPageChange }) {
-  const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
-  }
+  const getPageItems = () => {
+    if (totalPages <= 5) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+
+    if (currentPage <= 3) {
+      return [1, 2, 3, "...", totalPages - 1, totalPages];
+    }
+
+    if (currentPage >= totalPages - 2) {
+      return [1, 2, "...", totalPages - 2, totalPages - 1, totalPages];
+    }
+
+    return [1, 2, "...", currentPage, "...", totalPages - 1, totalPages];
+  };
+
+  const pageItems = getPageItems();
+
   return (
     <div className="pagination-container">
       {/* Nút Trang trước */}
@@ -18,15 +32,21 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
       </button>
       {/* Các nút số trang */}
       <div className="page-numbers">
-        {pageNumbers.map((number) => (
-          <button
-            key={number}
-            className={`page-btn ${number === currentPage ? 'active' : ''}`}
-            onClick={() => onPageChange(number)}
-          >
-            {number}
-          </button>
-        ))}
+        {pageItems.map((item, index) =>
+          item === "..." ? (
+            <span key={`dots-${index}`} className="page-dots">
+              ...
+            </span>
+          ) : (
+            <button
+              key={item}
+              className={`page-btn ${item === currentPage ? "active" : ""}`}
+              onClick={() => onPageChange(item)}
+            >
+              {item}
+            </button>
+          )
+        )}
       </div>
       {/* Nút Trang sau */}
       <button 
