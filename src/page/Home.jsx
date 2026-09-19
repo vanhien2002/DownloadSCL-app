@@ -18,7 +18,7 @@ function Home() {
   const [tracks, settracks] = useState(mock100Tracks);
   const [currentPage, setcurrentPage] = useState(1);
   const itemPerpage = 3;
- 
+
   const indexOfLastTrack = currentPage * itemPerpage;
   const indexOfFirstTrack = indexOfLastTrack - itemPerpage;
   const currentTracks = tracks.slice(indexOfFirstTrack, indexOfLastTrack);
@@ -30,11 +30,6 @@ function Home() {
 
   return (
     <main className="home-container">
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
       <div className="home-header">
         <h1 className="home-title">
           SoundCloud <span className="title-gradient">Downloader</span>
@@ -70,7 +65,7 @@ function Home() {
           </h2>
         </div>
 
-        <div className="track-list">
+        <div className="track-list w-8/10 mx-auto">
           {currentTracks.map((track) => (
             <Track
               key={track.id}
@@ -82,6 +77,11 @@ function Home() {
           ))}
         </div>
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </main>
   );
 }
