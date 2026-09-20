@@ -6,7 +6,7 @@ function Header() {
 
     return (
         <header className="header-block">
-            <div className="header-container">
+            <div className="block sm:flex header-container">
                 <div className="header-logo">
                     <Link to="/">
                         <span className="logo-accent">Sound</span>LoadMate

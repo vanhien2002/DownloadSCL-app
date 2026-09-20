@@ -16,15 +16,15 @@ function ButtonDownload({
   return (
     <button
       type={type}
-      className={`btn-download btn-download--${variant} btn-download--${size} ${isLoading ? 'is-loading' : ''} ${className}`.trim()}
+      className={`p-[0.6rem] btn-download btn-download--${variant} btn-download--${size} ${isLoading ? 'is-loading' : ''} ${className}`.trim()}
       onClick={onClick}
       disabled={disabled || isLoading}
     >
       {isLoading ? (
-        <span className="btn-spinner" aria-hidden="true" />
+        <span className="w-0.5 btn-spinner" aria-hidden="true" />
       ) : (
         <svg
-          className="btn-download-icon"
+          className="w-[1.5rem] btn-download-icon"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -37,7 +37,7 @@ function ButtonDownload({
           <line x1="12" y1="15" x2="12" y2="3" />
         </svg>
       )}
-      <span className="btn-download-text">{content}</span>
+      <span className="text-[15px] btn-download-text">{content}</span>
     </button>
   );
 }

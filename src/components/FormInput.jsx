@@ -2,6 +2,7 @@ import { useState } from "react";
 import ButtonDownload from "./ButtonDownload.jsx";
 import "./css/FormInput.css";
 import Error from "./Error.jsx";
+import urlValidator  from "../utils/urlValidator.js";
 
 function FormInput({ onStartDownload,handleStartSubmitForm }) {
   const [url, setUrl] = useState("");
@@ -23,7 +24,7 @@ function FormInput({ onStartDownload,handleStartSubmitForm }) {
     const trimmedUrl = url.trim();
 
     // 1. Validation: Empty URL check
-    if (!trimmedUrl) {
+    if (urlValidator().isEmpty(url)) {
       const errMsg = "Please enter a SoundCloud URL before downloading.";
       setValidationError(errMsg);
       setDownloadStatus({
@@ -36,7 +37,7 @@ function FormInput({ onStartDownload,handleStartSubmitForm }) {
     }
 
     // 2. Validation: Invalid SoundCloud URL check
-    if (!isValidSoundCloudUrl(trimmedUrl)) {
+    if (!urlValidator().isValid(trimmedUrl)) {
       const errMsg = "Invalid SoundCloud URL. Please enter a valid SoundCloud link (e.g. https://soundcloud.com/artist/track).";
       setValidationError(errMsg);
       setDownloadStatus({
@@ -46,50 +47,7 @@ function FormInput({ onStartDownload,handleStartSubmitForm }) {
         errorCode: "ERR_INVALID_SOUNDCLOUD_URL",
       });
       return;
-    }
-
-    // 3. Valid URL: Trigger download process
-    setValidationError("");
-    setDownloadStatus({
-      status: "processing",
-      progress: 30,
-      stage: "Connecting & validating SoundCloud track stream...",
-    });
-
-    try {
-      if (onStartDownload) {
-        onStartDownload(trimmedUrl);
-        handleStartSubmitForm(url, "susscess");
-        // Tắt bảng Error/Processing ngay khi submit thành công
-        setDownloadStatus(null);
-      } else {
-        // Simulated process steps with live progress
-        setTimeout(() => {
-          setDownloadStatus({
-            status: "processing",
-            progress: 75,
-            stage: "Converting audio stream to 320kbps High-Quality MP3...",
-          });
-        }, 1400);
-
-        setTimeout(() => {
-          setDownloadStatus({
-            status: "success",
-            progress: 100,
-            title: "Download Ready!",
-            message: "Track converted successfully. Your high-quality MP3 file download is starting.",
-          });
-        }, 3000);
-      }
-    } catch (unhandledErr) {
-      // Catch any unhandled runtime error
-      setDownloadStatus({
-        status: "error",
-        title: "Unhandled Error Occurred",
-        message: unhandledErr?.message || "An unhandled system exception occurred during the download process.",
-        errorCode: "ERR_UNHANDLED_EXCEPTION",
-      });
-    }
+    } 
   };
 
   const handleCloseStatus = () => {
@@ -102,17 +60,16 @@ function FormInput({ onStartDownload,handleStartSubmitForm }) {
 
   return (
     <div className="form-input-container">
-      <form className="form-url" onSubmit={handleSubmit}>
-        <div className="input-field-wrapper">
-          <input
+      <form className="form-url flex" onSubmit={handleSubmit}>
+        <div className="input-field-wrapper flex">
+          <input 
             type="text"
-            className={`inpItem ${validationError ? "is-invalid" : ""}`}
+            className={`md:w-12/12 inpItem ${validationError ? "is-invalid" : ""}`}
             placeholder="Paste SoundCloud URL here..."
             value={url}
             onChange={(e) => {
               setUrl(e.target.value);
-              if (validationError) setValidationError("");
-              // Tắt bảng Error nếu người dùng bắt đầu nhập lại
+              if (validationError) setValidationError(""); 
               if (downloadStatus && downloadStatus.status === "error") {
                 setDownloadStatus(null);
               }

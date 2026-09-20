@@ -70,14 +70,9 @@
 }
 
 .btn-download--md {
-  padding: 0.6rem 1.25rem;
-  font-size: 0.95rem;
+   font-size: 0.95rem;
 }
-
-.btn-download--md .btn-download-icon {
-  width: 18px;
-  height: 18px;
-}
+ 
 
 .btn-download--lg {
   padding: 0.8rem 1.75rem;
