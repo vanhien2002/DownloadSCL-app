@@ -9,12 +9,6 @@ function FormInput({ onStartDownload,handleStartSubmitForm }) {
   const [validationError, setValidationError] = useState("");
   const [downloadStatus, setDownloadStatus] = useState(null);
 
-  // SoundCloud URL Validation Helper
-  const isValidSoundCloudUrl = (inputUrl) => {
-    // Regex matching soundcloud.com or on.soundcloud.com track or playlist links
-    const scRegex = /^(https?:\/\/)?(www\.)?(m\.)?(soundcloud\.com|on\.soundcloud\.com)\/[a-zA-Z0-9-_]+\/[a-zA-Z0-9-_]+.*$/i;
-    return scRegex.test(inputUrl.trim());
-  };
 
   const handleSubmit = (e) => {
     handleStartSubmitForm(url, "start");
@@ -48,6 +42,7 @@ function FormInput({ onStartDownload,handleStartSubmitForm }) {
       });
       return;
     } 
+    
   };
 
   const handleCloseStatus = () => {
