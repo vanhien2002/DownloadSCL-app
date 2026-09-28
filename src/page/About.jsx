@@ -38,7 +38,7 @@ function About() {
           Why Choose Us?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white/5 border border-white/5 rounded-3xl p-10 backdrop-blur-md transition-all duration-300 hover:-translate-y-2.5 hover:bg-white/10 hover:border-[#ff5500]/30 hover:shadow-[0_20px_40px_rgba(255,85,0,0.1)]">
+          <div className="border border-[#333] bg-white/5 rounded-3xl p-10 backdrop-blur-md transition-all duration-300 hover:-translate-y-2.5 hover:bg-white/10 hover:border-[#ff5500]/30 hover:shadow-[0_20px_40px_rgba(255,85,0,0.1)]">
             <div className="text-5xl mb-6 bg-[#ff5500]/10 w-20 h-20 flex items-center justify-center rounded-full border border-[#ff5500]/20">
               ⚡
             </div>
@@ -79,12 +79,12 @@ function About() {
 
       {/* How it Works Section */}
       <section className="w-full">
-        <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+        <h2 className="mb-12 text-4xl font-bold text-center bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
           How It Works
         </h2>
         <div className="flex flex-col md:flex-row gap-8 relative">
           {/* Custom connecting line for desktop */}
-          <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-transparent via-[#ff5500]/50 to-transparent z-0"></div>
+          <div className="top-16 hidden md:block absolute left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-transparent via-[#ff5500]/50 to-transparent z-0"></div>
 
           <div className="flex-1 text-center relative z-10 p-8 bg-slate-900/60 rounded-2xl border border-white/5 transition-transform duration-300 hover:scale-105">
             <div className="w-16 h-16 bg-gradient-to-br from-[#ff5500] to-[#ff8800] rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-[0_0_20px_rgba(255,85,0,0.4)]">
