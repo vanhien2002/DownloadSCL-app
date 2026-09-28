@@ -47,7 +47,7 @@ function About() {
               waiting, no queues.
             </CardDescription>
           </Card>
-          
+
           <Card>
             <CardIcon>🎵</CardIcon>
             <CardTitle>High Quality</CardTitle>
@@ -56,7 +56,7 @@ function About() {
               crystal clear audio.
             </CardDescription>
           </Card>
-          
+
           <Card>
             <CardIcon>🛡️</CardIcon>
             <CardTitle>Safe & Secure</CardTitle>
