@@ -1,6 +1,6 @@
  
 const API_CONFIG = {
-  BASE_URL: process.env.REACT_APP_API_URL || "https://localhost:44322/api",
+  BASE_URL: import.meta.env.VITE_API_URL || "https://localhost:44322/api",
 
   TIMEOUT: 10000,
 

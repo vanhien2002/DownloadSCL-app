@@ -28,10 +28,14 @@ function Home() {
     setcurrentPage(pageNumber);
   };
 
-  const handleStartSubmitForm = (url, status) => {
+  const handleStartSubmitForm = (url, status, trackData) => {
     if(status == "susscess")
     {
-      settracks(mock100Tracks); 
+      if (trackData) {
+        settracks([trackData]); 
+      } else {
+        settracks(mock100Tracks); 
+      }
     }
     else {settracks([]);}
   }
@@ -89,6 +93,7 @@ function Home() {
                   artist={track.artist}
                   duration={track.duration}
                   image={track.image}
+                  onDownload={() => window.open(track.urlDownload, "_blank")}
                 />
               ))}
             </div> 

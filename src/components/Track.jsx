@@ -51,25 +51,11 @@ function Track({
         </div>
 
         <div className="track-details">
-          <div className="track-main-info">
-            <span className="track-badge-tag">SoundCloud Track</span>
+          <div className="track-main-info"> 
             <h3 className="track-title" title={title}>
               {title}
             </h3>
-            <p className="track-artist">
-              <svg
-                className="artist-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-              <span>{artist}</span>
+            <p className="track-artist"> 
             </p>
             <div className="meta-item">
               <svg

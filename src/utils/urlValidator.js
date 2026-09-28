@@ -2,9 +2,9 @@ function isEmpty(url) {
   return !url || typeof url != "string" || url.trim() == "";
 }
 function isValid(url) {
+  const soundCloudRegex =
+    /^(https?:\/\/)?(www\.)?(soundcloud\.com|on\.soundcloud\.com)(\/.*)?$/i;
 
-const soundCloudRegex =
-    /^(https?:\/\/)?(www\.)?(soundcloud\.com|on\.soundcloud\.com)\/[\w\-]+(\/[\w\-]+)*(\?.*)?$/i;
 
   return soundCloudRegex.test(url.trim());
 }
