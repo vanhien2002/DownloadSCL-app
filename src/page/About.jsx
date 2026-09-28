@@ -4,7 +4,7 @@ function About() {
   return (
     <div className="min-h-screen py-16 px-8 text-white flex flex-col items-center gap-24 max-w-6xl mx-auto">
       {/* Hero Section */}
-      <section className="text-center max-w-3xl animate-[fadeInDown_0.8s_ease-out]">
+      <section className="text-center max-w-3xl animate-fadeInDown">
         <h1
           className="text-5xl md:text-6xl 
         font-extrabold 
@@ -116,13 +116,6 @@ function About() {
         </div>
       </section>
 
-      {/* Global CSS for the keyframe animation that Tailwind arbitrary values don't inject fully without setup */}
-      <style>{`
-        @keyframes fadeInDown {
-          from { opacity: 0; transform: translateY(-30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </div>
   );
 }
