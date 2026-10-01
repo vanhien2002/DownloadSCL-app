@@ -8,6 +8,12 @@ export const metadata = {
   description: "DownloadSCL App",
 };
 
+
+const ItemHeaderPropos = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" }
+]
+
 export default function RootLayout({
   children,
 }: {
@@ -17,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ErrorBoundary>
-          <Header />
+          <Header items={ItemHeaderPropos} />
           {children}
           <Footer />
         </ErrorBoundary>

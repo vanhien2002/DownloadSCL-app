@@ -3,7 +3,24 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import './css/Header.css';
 
-function Header() {
+
+interface NavItem {
+    label: string;
+    href: string;
+}
+
+interface HeaderProps {
+    items?: NavItem[];
+}
+
+const defaultNavItems: NavItem[] = [
+    {label: "Home", href:"/"},
+    {label: "About", href:"/about"}
+]
+ 
+
+
+function Header({ items = defaultNavItems }: HeaderProps) {
     const pathname = usePathname();
 
     return (
@@ -15,18 +32,16 @@ function Header() {
                     </Link>
                 </div>
                 <nav className="header-nav">
-                    <Link
-                        href="/"
-                        className={`nav-link ${pathname === '/' ? 'active' : ''}`}
-                    >
-                        Home
-                    </Link>
-                    <Link
-                        href="/about"
-                        className={`nav-link ${pathname === '/about' ? 'active' : ''}`}
-                    >
-                        About
-                    </Link>
+                    {/* Sử dụng map để lặp qua mảng items và render ra các thẻ Link */}
+                    {items.map((item) => (
+                        <Link
+                            key={item.href} // React yêu cầu prop 'key' khi render list
+                            href={item.href}
+                            className={`nav-link ${pathname === item.href ? 'active' : ''}`}
+                        >
+                            {item.label}
+                        </Link>
+                    ))}
                 </nav>
             </div>
         </header>
