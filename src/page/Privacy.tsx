@@ -1,6 +1,7 @@
-function Privacy ()
-{
+function Privacy() {
     return <>
-    <div>Privacy  page</div>
+        <div>Privacy  page</div>
     </>
 }
+
+export default Privacy;
