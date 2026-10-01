@@ -11,7 +11,8 @@ export const metadata = {
 
 const ItemHeaderPropos = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" }
+  { label: "About", href: "/about" },
+  { label: "Privacy", href: "/privacy" }
 ]
 
 export default function RootLayout({
