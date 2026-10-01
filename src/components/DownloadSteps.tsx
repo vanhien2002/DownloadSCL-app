@@ -40,7 +40,7 @@ const DownloadSteps = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-[900px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-[900px]"> 
         {stepsData.map((step) => (
           <div
             key={step.id}
@@ -63,3 +63,7 @@ const DownloadSteps = () => {
 };
 
 export default DownloadSteps;
+
+ 
+
+
