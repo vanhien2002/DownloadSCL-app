@@ -115,7 +115,6 @@ function Home() {
 
       {/* Hướng dẫn sử dụng Section */}
       <DownloadSteps />
-
       {/* Tính năng nổi bật Section */}
       <section className="w-full mt-16 flex flex-col items-center">
         <div className="mb-10 text-center">
