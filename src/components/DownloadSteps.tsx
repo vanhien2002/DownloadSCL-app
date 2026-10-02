@@ -1,16 +1,7 @@
 "use client";
 import React from 'react';
 
-const stepsDownloadData = [
-  {
-    id:1,
-    title:'Sao chép liên kết',
-    description:'Mở SoundCloud và sao chép đường dẫn (URL) của bài hát hoặc danh sách phát bạn muốn tải.'
-  },
-]
-
-
-const stepsData = [
+const STEPS_DATA = [
   {
     id: 1,
     title: 'Sao chép liên kết',
@@ -41,7 +32,7 @@ const DownloadSteps = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-[900px]"> 
-        {stepsData.map((step) => (
+        {STEPS_DATA.map((step) => (
           <div
             key={step.id}
             className="bg-white/50 dark:bg-[#1f2028]/50 border border-[var(--border,#e5e4e7)] rounded-[20px] px-6 py-8 text-center transition-all duration-300 backdrop-blur-[10px] hover:-translate-y-[5px] hover:shadow-[var(--shadow)]"

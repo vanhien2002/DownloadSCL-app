@@ -6,21 +6,13 @@ interface ErrorProps {
   title?: string;
   message?: string;
   errorCode?: string;
-  progress?: any;
-  stage?: any;
-  onRetry?: any;
-  onClose?: any;
 }
 
 function Error({
   status = "error",
   title = "An Unhandled Error Occurred",
   message = "Something went wrong. Please try again.",
-  errorCode,
-  progress,
-  stage,
-  onRetry,
-  onClose
+  errorCode
 }: ErrorProps) {
    
   return (

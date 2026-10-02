@@ -1,7 +1,7 @@
-function isEmpty(url) {
-  return !url || typeof url != "string" || url.trim() == "";
+function isEmpty(url?: string): boolean {
+  return !url || typeof url !== "string" || url.trim() === "";
 }
-function isValid(url) {
+function isValid(url: string): boolean {
   const soundCloudRegex =
     /^(https?:\/\/)?(www\.)?(soundcloud\.com|on\.soundcloud\.com)(\/.*)?$/i;
 
@@ -10,8 +10,8 @@ function isValid(url) {
 }
 
 const urlValidator = () => ({
-  isEmpty: (url) => isEmpty(url),
-  isValid: (url) => isValid(url),
+  isEmpty: (url?: string) => isEmpty(url),
+  isValid: (url: string) => isValid(url),
 });
 
 export default urlValidator;

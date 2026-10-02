@@ -16,11 +16,10 @@ interface DownloadStatus {
 }
 
 interface FormInputProps {
-  onStartDownload?: any;
-  handleStartSubmitForm: (url: string, status: string, data?: any) => void;
+  onStatusChange: (status: "start" | "success" | "error", data?: any) => void;
 }
 
-function FormInput({ onStartDownload, handleStartSubmitForm }: FormInputProps) {
+function FormInput({ onStatusChange }: FormInputProps) {
   const [url, setUrl] = useState("");
   const [validationError, setValidationError] = useState("");
   const [downloadStatus, setDownloadStatus] = useState<DownloadStatus | null>(null);
@@ -56,7 +55,7 @@ function FormInput({ onStartDownload, handleStartSubmitForm }: FormInputProps) {
       return;
     }
 
-    handleStartSubmitForm(url, "start");
+    onStatusChange("start");
 
     // Bắt đầu gọi API
     setDownloadStatus({
@@ -94,13 +93,15 @@ function FormInput({ onStartDownload, handleStartSubmitForm }: FormInputProps) {
       };
 
       setDownloadStatus(null); // Tắt form loading
-      handleStartSubmitForm(url, "susscess", formattedTrack); // Truyền dữ liệu thật ra ngoài
+      onStatusChange("success", formattedTrack); // Truyền dữ liệu thật ra ngoài
     } catch (error: any) {
       setDownloadStatus({
         status: "error",
         title: "API Error",
         message: error?.message || "Failed to start download process",
       });
+      // Báo lỗi cho component cha nếu cần
+      // onStatusChange("error");
     }
   };
 

@@ -7,7 +7,7 @@ interface TrackProps {
   title?: string;
   artist?: string;
   duration?: string | number;
-  onDownload?: any;
+  onDownload?: () => void;
 }
 
 function Track({
@@ -18,7 +18,7 @@ function Track({
   onDownload,
 }: TrackProps) {
   // Format duration helper if passed as number of seconds
-  const formatDuration = (val) => {
+  const formatDuration = (val: string | number) => {
     if (typeof val === "number") {
       const minutes = Math.floor(val / 60);
       const seconds = Math.floor(val % 60);
@@ -37,8 +37,8 @@ function Track({
             className="img-track"
             src={image}
             alt={title}
-            onError={(e: any) => {
-              e.target.src =
+            onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+              (e.target as HTMLImageElement).src =
                 "https://i1.sndcdn.com/artworks-x9Ee1zlKgCXEq31K-f6dqlw-t1080x1080.jpg";
             }}
           />

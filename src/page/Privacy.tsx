@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import LoaddingDownload from "../components/LoaddingDownload";
+import LoadingDownload from "../components/LoadingDownload";
 
 function Privacy() {
   return (

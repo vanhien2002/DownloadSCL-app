@@ -7,7 +7,7 @@ import { Card, CardIcon, CardTitle, CardDescription } from "../components/Featur
 import DownloadSteps from "../components/DownloadSteps";
 
 // Dữ liệu 100 bài hát thử nghiệm
-const mock100Tracks = Array.from({ length: 100 }, (_, index) => ({
+const MOCK_TRACKS = Array.from({ length: 100 }, (_, index) => ({
   id: index + 1,
   title: `SoundCloud Track #${index + 1}`,
   artist: `Nghệ sĩ ${index + 1}`,
@@ -16,35 +16,29 @@ const mock100Tracks = Array.from({ length: 100 }, (_, index) => ({
 }));
 
 function Home() {
-  const [tracks, settracks] = useState([]);
-  const [currentPage, setcurrentPage] = useState(1);
-  const itemPerpage = 3;
+  const [tracks, setTracks] = useState<any[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3;
 
-  const indexOfLastTrack = currentPage * itemPerpage;
-  const indexOfFirstTrack = indexOfLastTrack - itemPerpage;
+  const indexOfLastTrack = currentPage * itemsPerPage;
+  const indexOfFirstTrack = indexOfLastTrack - itemsPerPage;
   const currentTracks = tracks.slice(indexOfFirstTrack, indexOfLastTrack);
-  const totalPages = Math.ceil(tracks.length / itemPerpage);
+  const totalPages = Math.ceil(tracks.length / itemsPerPage);
 
-  const handlePageChange = (pageNumber) => {
-    setcurrentPage(pageNumber);
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
   };
 
-  const handleStartSubmitForm = (url, status, trackData) => {
-    if(status == "susscess")
-    {
+  const handleDownloadStatusChange = (status: string, trackData?: any) => {
+    if (status === "success") {
       if (trackData) {
-        settracks([trackData]); 
+        setTracks([trackData]);
       } else {
-        settracks(mock100Tracks); 
+        setTracks(MOCK_TRACKS);
       }
+    } else if (status === "start" || status === "error") {
+      setTracks([]);
     }
-    else {settracks([]);}
-  }
-
-  const handleStartDownload = (url) => {
-    // Hiển thị mock data sau khi submit URL hợp lệ
-    settracks(mock100Tracks);
-    setcurrentPage(1); // Reset về trang 1
   };
 
   return (
@@ -64,7 +58,7 @@ function Home() {
       </div>
 
       <div className="w-full mb-11">
-        <FormInput onStartDownload={handleStartDownload} handleStartSubmitForm = {handleStartSubmitForm}/>
+        <FormInput onStatusChange={handleDownloadStatusChange} />
       </div>
 
       {tracks.length > 0 && (
