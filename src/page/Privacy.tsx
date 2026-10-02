@@ -14,8 +14,8 @@ const changeLoadding = () => {
 
     setisShowLoadding(nextStatus);
 
-    if(nextStatus){setlabeLoadding("Loadding update loadding");}
-    else{setlabeLoadding("No loadding loadding");} 
+    if(nextStatus){setlabeLoadding("Đang xử lý dữ liệu");}
+    else{setlabeLoadding("");} 
 }
 
   return (
