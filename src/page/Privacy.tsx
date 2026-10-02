@@ -3,27 +3,8 @@ import React, { useState } from "react";
 import LoaddingDownload from "../components/LoaddingDownload";
 
 function Privacy() {
-
-
-const [ isShowLoadding , setisShowLoadding] = useState<boolean>(false);
-const [ labeLoadding , setlabeLoadding] = useState<string>("No Loadding");
-
-const changeLoadding = () => {
-    
-    const nextStatus = !isShowLoadding;
-
-    setisShowLoadding(nextStatus);
-
-    if(nextStatus){setlabeLoadding("Đang xử lý dữ liệu");}
-    else{setlabeLoadding("");} 
-}
-
   return (
     <main className="container mx-auto px-4 py-8 max-w-4xl leading-relaxed">
-      <button onClick={changeLoadding}>Click change loadding</button>
-      <LoaddingDownload label= {labeLoadding} status = {isShowLoadding}/>
-
-
       <h1 className="text-3xl font-bold mb-6 text-gray-900">Privacy Policy</h1>
 
       <div className="space-y-6 text-gray-700">
