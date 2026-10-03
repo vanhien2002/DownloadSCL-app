@@ -48,7 +48,7 @@ function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) 
             <button
               key={item}
               className={`page-btn ${item === currentPage ? "active" : ""}`}
-              onClick={() => onPageChange(item)}
+              onClick={() => onPageChange(item as number)}
             >
               {item}
             </button>

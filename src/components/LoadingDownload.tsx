@@ -7,7 +7,7 @@ const LoadingDownload = ({
   label = "No loading...",
   status = false,
 }: LoadingDownloadProps) => {
-  const showLoadding = () => {
+  const showLoading = () => {
     if (status) {
       return (
         <div className="p-11 flex justify-center w-12/12 border rounded-2xl border-[#155dfc] h-20 flex items-center justify-center gap-2">
@@ -48,7 +48,7 @@ const LoadingDownload = ({
     }
   };
 
-  return showLoadding();
+  return showLoading();
 };
 
 export default LoadingDownload;
